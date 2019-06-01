@@ -1,0 +1,32 @@
+#翼の自動駒入れツール
+
+# coding: utf-8
+#色々インポート
+from selenium import webdriver
+from selenium.webdriver.support.ui import Select
+#from selenium.common.exceptions import NoSuchElementException
+#import time
+
+#ChormeDriverを指定
+driver = webdriver.Chrome('C:\\Users\\Ohagi\\Desktop\\Work\\Selenium\\chromedriver.exe')
+
+#driver.get('https://sangoku.kmycode.net/')
+driver.get('http://ysks.sakura.ne.jp/tubasa/index.cgi')
+
+driver.find_element_by_css_selector('body > center > p > table > tbody > tr:nth-child(1) > td > input[type=text]').send_keys('******')
+driver.find_element_by_css_selector('body > center > p > table > tbody > tr:nth-child(2) > td > input[type=password]').send_keys('******')
+
+element = driver.find_element_by_css_selector('body > center > p > table > tbody > tr:nth-child(3) > td > input[type=submit]')
+driver.execute_script("arguments[0].click();", element)
+
+element = driver.find_element_by_css_selector('body > a > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > a:nth-child(1) > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > input[type=button]:nth-child(13)')
+driver.execute_script("arguments[0].click();", element)
+
+element = driver.find_element_by_css_selector('body > a > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > a:nth-child(1) > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > th:nth-child(1) > select')
+driver.execute_script("arguments[0].click();", element)
+
+# 選択する(value属性)
+element = driver.find_element_by_css_selector('body > a > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > a:nth-child(1) > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > th:nth-child(1) > select').select_by_value('CMD_INPT')
+
+element = driver.find_element_by_css_selector('body > a > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > a:nth-child(1) > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > th:nth-child(2) > input[type=SUBMIT]')
+driver.execute_script("arguments[0].click();", element)
